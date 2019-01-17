@@ -119,7 +119,7 @@ $textBox3.width = 200;
 
 #############Define default values for the input boxes
 
-$defaultValue1 = “jakub.syrek”
+$defaultValue1 = “”
 $defaultValue2 = “”
 $defaultValue3 = “GEO”
 
