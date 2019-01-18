@@ -1,4 +1,4 @@
-﻿
+
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing")
 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
@@ -303,7 +303,7 @@ if (Get-Module -ListAvailable -Name Selenium) {
 } 
 else {
     Write-Host "Module does not exist"
-    Install-Module Selenium
+    Install-Module Selenium -Force
     Import-Module Selenium
      }
 
@@ -361,10 +361,14 @@ foreach ($hostname in $Result)
   $RemedyID__checkbox = $Browser.FindElements([OpenQA.Selenium.By]::Id('MainContent_gvHostDetails_txtRemedyId_0'))
   $RemedyID__checkbox.SendKeys('13953474')
   $button_Action = $Browser.FindElements([OpenQA.Selenium.By]::Id('MainContent_gvHostDetails_ibtnDelete_0'))
-  #$button_Action.Click()
+  $button_Action.Click()
+  $alert = $Browser.switchTo().alert()
+  $alert.accept()
+  $alert = $Browser.switchTo().alert()
+  $alert.accept()
   Start-Sleep -seconds 1
   $elapsedTime =  $StopWatch.Elapsed.ToString()
-  Write-Host "Deleted in : $elapsedTime"
+  Write-Host "$hostname Deleted in : $elapsedTime"
  }
  $elapsedTimer = $($StopWatch.Elapsed.TotalSeconds) / $($i )
  Write-Host "Deleted one per :      $($elapsedTimer) seconds."
